@@ -94,7 +94,9 @@ const Tags = ({ tags }) => {
 const Annonce = () => {
   const { id } = useParams();
   const logement = logementData.find((a) => a.id === id);
-
+  const equipment = logement.equipments.map((equipment, index) => (
+    <li key={index}>{equipment}</li>
+  ))
   return (
     <div className="annonce-container">
       {/* Galerie avec Slider */}
@@ -117,10 +119,8 @@ const Annonce = () => {
       {/* Conteneur flex pour la description et les équipements */}
       <div className="details-container">
        
-        <Collapse title="Description" content={logement.description}/>
-        <Collapse title="Equipement" content={logement.equipments.map((equipment, index) => (
-                  <li key={index}>{equipment}</li>
-                ))}/>
+        <Collapse key={0} title="Description" content={logement.description}/>
+        <Collapse key={1} title="Equipement" content={equipment}/>
       </div>
       <Footer />
     </div>

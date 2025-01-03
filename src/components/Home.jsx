@@ -1,7 +1,7 @@
 import React from "react";
 import './Home.css';
 import featuredImage from "./home-pics.png";
-import logements from "../Asset/logements.json"; // Assure-toi que le chemin est correct
+import logements from "../Asset/logements.json"; 
 import { Link } from "react-router-dom";
 import Footer from './Footer';
 

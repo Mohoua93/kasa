@@ -3,29 +3,32 @@ import { useState } from "react";
 
 export default function Collapse(props) {
     
-    const [openMenu, setOpenMenu] = useState(null);
+    const [isOpenMenu, setIsOpenMenu] = useState (true);
 
-    const toggleMenu = (menu) => {
-        if (openMenu === menu) {
-          setOpenMenu(null); // Ferme le menu si on clique sur le même
-        } else {
-          setOpenMenu(menu); // Ouvre le menu cliqué et ferme l'autre
+    const toggleMenu = () => {
+          setIsOpenMenu(! isOpenMenu); // Ferme le menu si on clique sur le même
         }
-      };
     
     return (
         <div className="description-dropdown">
           <summary 
-            onClick={() => toggleMenu("description")} 
+            onClick={() => toggleMenu()} 
             style={{ cursor: 'pointer' }} 
-            aria-expanded={openMenu === "description"}
+            // aria-expanded={isOpenMenu === "description"}
           >
             {props.title}
-            <span className={`arrow ${openMenu === "description" ? "arrow-up" : ""}`}>▼</span>
+            <span className={`arrow ${isOpenMenu === true ? "arrow-up" : ""}`}>▼</span>
           </summary>
-          <div className={`dropdown-content ${openMenu === "description" ? "open" : ""}`}>
+          { isOpenMenu &&
+          <div className={`dropdown-content ${isOpenMenu === true ? "open" : ""}`}>
             <p>{props.content}</p>
           </div>
+}
         </div>
     );
+
 }
+
+
+
+

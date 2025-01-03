@@ -13,7 +13,7 @@ const About = () => {
         },
         {
             title: "Respect",
-            content: "La bienveillance fait aprtie des valeurs fondatrices de Kasa. Tout comportement discriminatoires ou perturbations du voisinage entraînera une exclusion de notre plateforme."
+            content: "La bienveillance fait partie des valeurs fondatrices de Kasa. Tout comportement discriminatoires ou perturbation du voisinage entraînera une exclusion de notre plateforme."
         },
         {
             title: "Service",
