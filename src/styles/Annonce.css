@@ -1,0 +1,189 @@
+.annonce-container {
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 12px;
+  color: #fe6060;
+  font-family: Arial, sans-serif;
+}
+
+/* En-tête (titre et localisation) */
+h1 {
+  font-size: 2.5rem;
+  color: #fe6060;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #fe6060;
+  font-size: 1.2rem;
+}
+
+.header-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Hôte et rating */
+.host-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 10px;
+}
+
+.host {
+  display: flex;
+  align-items: center;
+}
+
+.host-picture {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  border: 2px solid #ddd;
+}
+
+.host-name {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #fe6060;
+}
+
+.rating {
+  font-size: 1.5em;
+  color: #fe6060;
+}
+
+/* Slider */
+.slider {
+  position: relative;
+  width: 100%;
+  height: 615px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+
+.slide-img {
+  width: 100%;
+  height: 590px;
+  border-radius: 12px;
+  object-fit: cover; /* Added to make images fill the space */
+}
+
+.left-arrow,
+.right-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  background: none;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 80px;
+  z-index: 1;
+}
+
+.left-arrow {
+  left: 10px; /* Changed from 85% */
+}
+
+.right-arrow {
+  right: 10px; /* Changed from 85% */
+}
+
+/* Tags */
+.tags ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.tags li {
+  background-color: #fe6060;
+  padding: 8px 16px;
+  border-radius: 20px;
+  margin-right: 10px;
+  color: white;
+}
+
+/* Menus déroulants (Description et Équipements) */
+.details-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2px;
+  margin-top: 20px;
+}
+
+/* Styles pour le menu déroulant */
+/* Style commun pour le menu déroulant des équipements et de la description */
+.equipments-dropdown,
+.description-dropdown {
+  flex: 1;
+  border-radius: 5px;
+  background-color: #f0f0f0; /* Couleur de fond rouge */
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out;
+  color: white;
+}
+
+.equipments-dropdown summary,
+.description-dropdown summary {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 20px;
+  color: white; /* Texte blanc pour le résumé */
+  background-color: #fe6060; /* Fond rouge pour le titre du menu */
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 0; /* Supprime la marge entre le titre et le contenu */
+}
+
+/* Contenu des menus déroulants avec fond gris clair */
+.equipments-dropdown ul,
+.description-dropdown p {
+  margin-top: 0; /* Supprime la marge entre le contenu et le titre */
+  background-color: #f0f0f0; /* Fond gris clair pour le contenu */
+  padding: 15px;
+  border-radius: 5px;
+}
+
+/* Style spécifique à la liste des équipements */
+.equipments-dropdown ul {
+  list-style-type: none;
+  padding-left: 15px;
+  margin: 0; /* Supprime les marges externes */
+}
+
+.equipments-dropdown li {
+  margin-bottom: 5px;
+  color: #fe6060; /* Couleur du texte des équipements */
+}
+
+.dropdown-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.dropdown-content.open {
+  max-height: 100vh;
+  margin-bottom: 20px;
+}
+
+.collapse-box {
+  width: 48%;
+}
+
+.collapse-box ul {
+  list-style-type: none; /* Enlève les puces */
+  padding: 0; /* Supprime le padding par défaut */
+  margin: 0; /* Supprime la marge par défaut */
+}

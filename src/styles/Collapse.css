@@ -1,0 +1,117 @@
+.title-dropdown {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 20px;
+  color: white; /* Texte blanc pour le résumé */
+  background-color: #fe6060; /* Fond rouge pour le titre du menu */
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 0; /* Supprime la marge entre le titre et le contenu */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Styles pour le menu déroulant */
+.equipments-dropdown, .description-dropdown {
+  flex: 1;
+  border-radius: 5px;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out;
+  color: white;
+}
+
+/* Contenu des menus déroulants avec fond gris clair */
+.equipments-dropdown ul, .description-dropdown p {
+  margin-top: 0;
+  background-color: #f0f0f0;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+/* Style spécifique à la liste des équipements */
+.equipments-dropdown ul {
+  list-style-type: none;
+  padding-left: 15px;
+  margin: 0;
+}
+
+.equipments-dropdown li {
+  margin-bottom: 5px;
+  color: #fe6060;
+}
+
+.dropdown-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-in-out;
+  background-color: #f0f0f0;
+  padding: 15px;
+  border-radius: 5px;
+  opacity: 0;
+}
+
+.dropdown-content.open {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.dropdown-text {
+  color: #fe6060;
+  font-family: Montserrat, sans serif;
+}
+
+/* Animation pour les chevrons */
+.arrow {
+  transition: transform 0.3s ease;
+}
+
+.arrow-up {
+  transform: rotate(180deg);
+}
+
+.accordion-section {
+  max-width: 990px;
+  width: 100%;
+  padding: 20px; /* ✅ Supprime toute marge interne */
+  margin: 0 auto; /* ✅ Centre l'accordéon sans espace supplémentaire */
+}
+
+.accordion {
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 20px;
+  padding: 0;
+}
+
+.accordion-title {
+  background-color: #ff6060;
+  padding: 15px;
+  cursor: pointer;
+  font-family: Montserrat;
+  font-size: 1.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+  color: white;
+  margin: 0;
+  border: none;
+}
+
+.accordion-content {
+  padding: 20px; /* ✅ Ajuste le padding pour éviter l’espace en haut */
+  background-color: ghostwhite;
+  margin: 0;
+  max-height: 0; /* ✅ Cache le contenu par défaut */
+  overflow: hidden; /* ✅ Empêche l’espace résiduel */
+  transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+}
+
+/* ✅ Quand l’accordéon est ouvert */
+.accordion.open .accordion-content {
+  max-height: 500px; /* Ajuste si nécessaire */
+  padding: 15px; /* ✅ Ajoute du padding uniquement quand ouvert */
+}
+

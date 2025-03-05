@@ -1,0 +1,102 @@
+/* Stylisation pour la navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff6060; /* Couleur du logo */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #ff6060;
+}
+
+/* Stylisation pour le contenu de la page */
+.about-container {
+    display: flex;
+    flex-direction: column; /* Organise verticalement l'image et l'accordéon */
+    align-items: center; /* Centre les éléments horizontalement */
+    padding: 0 20px; /* Ajouter une marge intérieure (padding) de 20px à gauche et à droite */
+}
+
+.image-section {
+    width: 100%; /* L'image occupe toute la largeur de l'écran */
+}
+
+.featured-image {
+    width: 100%; /* L'image occupe toute la largeur de son conteneur */
+}
+
+.accordion-section {
+    max-width: 990px; /* Largeur maximale pour les menus accordéon */
+    width: 100%; /* Utilise 100% de l'espace disponible */
+    margin-top: 20px; /* Espace entre l'image et les sections accordéon */
+    padding: 0 20px; /* Ajoute une marge intérieure pour les côtés gauche et droit */
+}
+
+/* Stylisation pour les accordéons */
+.accordion {
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.accordion-title {
+    background-color: #ff6060;
+    padding: 15px;
+    cursor: pointer;
+    font-family: Montserrat;
+    font-size: 1.5em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    color: white;
+    margin: 0;
+    border: none;
+}
+
+.accordion-content {
+    padding: 0 15px; /* ✅ Ajuste le padding pour éviter l'espace en haut */
+    background-color: ghostwhite;
+    margin: 0;
+    max-height: 0; /* ✅ Assure que le contenu est caché par défaut */
+    overflow: hidden; /* ✅ Empêche l’espace résiduel */
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+}
+
+/* ✅ Quand l’accordéon est ouvert */
+.accordion.open .accordion-content {
+    max-height: 500px; /* Ajuste cette valeur si nécessaire */
+    padding: 15px; /* ✅ Ajoute du padding uniquement quand ouvert */
+}
+
+
+@keyframes slideDown {
+    from {
+        max-height: 0;
+    }
+    to {
+        max-height: 500px;
+    }
+}
+
