@@ -5,6 +5,8 @@ import "../styles/Annonce.css";
 import Collapse from "../components/Collapse";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faChevronRight, faStar as fullStar } from "@fortawesome/free-solid-svg-icons";
+import { Navigate } from "react-router-dom";
+
 
 // Composant Slider pour les images
 const Slider = ({ pictures }) => {
@@ -45,23 +47,25 @@ const Slider = ({ pictures }) => {
 };
 
 // Composant HostDetails avec étoiles FontAwesome
-const HostDetails = ({ host, rating }) => {
+const HostDetails = ({ host, rating, className }) => {
   const getStars = (rating) => {
     return Array.from({ length: 5 }, (_, i) => (
-      <FontAwesomeIcon key={i} icon={fullStar} className="star-icon" />
+      <FontAwesomeIcon
+        key={i}
+        icon={fullStar}
+        className={`star-icon ${i < rating ? "filled" : "empty"}`}
+      />
     ));
   };
 
   return (
     host && host.name && host.picture && (
-      <div className="host-container">
+      <div className={className}>
         <div className="host">
           <img src={host.picture} alt={host.name} className="host-picture" />
-          <div className="host-info">
-            <p className="host-name">{host.name}</p>
-            <div className="rating">{getStars(rating)}</div>
-          </div>
+          <p className="host-name">{host.name}</p>
         </div>
+        <div className="rating">{getStars(rating)}</div>
       </div>
     )
   );
@@ -85,29 +89,44 @@ const Annonce = () => {
   const logement = logementData.find((a) => a.id === id);
 
   if (!logement) {
-    return <p className="error-message">Annonce introuvable</p>;
+    return <Navigate to="/404" replace />;
   }
+  
 
   return (
     <div className="annonce-container">
       {logement.pictures?.length > 0 && <Slider pictures={logement.pictures} />}
 
       <div className="header-info">
-        <div>
+        <div className="header-left">
           <h1>{logement.title}</h1>
           <p>{logement.location}</p>
         </div>
-        <HostDetails host={logement.host} rating={logement.rating} />
+        <div className="host-desktop">
+          <HostDetails host={logement.host} rating={logement.rating} className="host-container" />
+        </div>
       </div>
-
+      
       <Tags tags={logement.tags} />
+      
+      <div className="host-mobile">
+        <HostDetails host={logement.host} rating={logement.rating} className="host-container" />
+      </div>
 
       <div className="details-container">
         <div className="collapse-box">
           <Collapse key={0} title="Description" content={logement.description} />
         </div>
         <div className="collapse-box">
-          <Collapse key={1} title="Équipements" content={<ul>{logement.equipments.map((eq, i) => <li key={i}>{eq}</li>)}</ul>} />
+          <Collapse 
+            key={1} 
+            title="Équipements" 
+            content={logement.equipments?.length > 0 ? (
+              <ul>{logement.equipments.map((eq, i) => <li key={i}>{eq}</li>)}</ul>
+            ) : (
+              <p>Aucun équipement renseigné</p>
+            )}
+          />
         </div>
       </div>
     </div>
@@ -115,3 +134,11 @@ const Annonce = () => {
 };
 
 export default Annonce;
+
+
+
+
+
+
+
+

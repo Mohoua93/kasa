@@ -75,7 +75,6 @@
   max-width: 990px;
   width: 100%;
   padding: 20px; /* ✅ Supprime toute marge interne */
-  margin: 0 auto; /* ✅ Centre l'accordéon sans espace supplémentaire */
 }
 
 .accordion {

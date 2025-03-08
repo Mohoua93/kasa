@@ -7,7 +7,6 @@
   font-family: Arial, sans-serif;
 }
 
-/* En-tête (titre et localisation) */
 h1 {
   font-size: 2.5rem;
   color: #fe6060;
@@ -17,6 +16,8 @@ h1 {
 p {
   color: #fe6060;
   font-size: 1.2rem;
+  display: flex;
+  flex-direction: row;
 }
 
 .header-info {
@@ -26,11 +27,9 @@ p {
   margin-top: 20px;
 }
 
-/* Hôte et rating */
 .host-container {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   margin-top: 10px;
 }
 
@@ -51,14 +50,17 @@ p {
   font-size: 1.1em;
   font-weight: bold;
   color: #fe6060;
+  white-space: pre-wrap;
+  text-align: right;
 }
 
 .rating {
   font-size: 1.5em;
   color: #fe6060;
+  display: flex;
+  align-items: center;
 }
 
-/* Slider */
 .slider {
   position: relative;
   width: 100%;
@@ -71,7 +73,8 @@ p {
   width: 100%;
   height: 590px;
   border-radius: 12px;
-  object-fit: cover; /* Added to make images fill the space */
+  object-fit: cover;
+  transition: opacity 0.5s ease-in-out;
 }
 
 .left-arrow,
@@ -90,14 +93,13 @@ p {
 }
 
 .left-arrow {
-  left: 10px; /* Changed from 85% */
+  left: 10px;
 }
 
 .right-arrow {
-  right: 10px; /* Changed from 85% */
+  right: 10px;
 }
 
-/* Tags */
 .tags ul {
   display: flex;
   flex-wrap: wrap;
@@ -114,7 +116,14 @@ p {
   color: white;
 }
 
-/* Menus déroulants (Description et Équipements) */
+.star-icon {
+  color: #e3e3e3;
+}
+
+.star-icon.filled {
+  color: #ff6060;
+}
+
 .details-container {
   display: flex;
   justify-content: space-between;
@@ -122,13 +131,11 @@ p {
   margin-top: 20px;
 }
 
-/* Styles pour le menu déroulant */
-/* Style commun pour le menu déroulant des équipements et de la description */
 .equipments-dropdown,
 .description-dropdown {
   flex: 1;
   border-radius: 5px;
-  background-color: #f0f0f0; /* Couleur de fond rouge */
+  background-color: #f0f0f0;
   overflow: hidden;
   transition: max-height 0.4s ease-in-out;
   color: white;
@@ -139,32 +146,30 @@ p {
   cursor: pointer;
   font-weight: bold;
   font-size: 20px;
-  color: white; /* Texte blanc pour le résumé */
-  background-color: #fe6060; /* Fond rouge pour le titre du menu */
+  color: white;
+  background-color: #fe6060;
   padding: 10px;
   border-radius: 5px;
-  margin-bottom: 0; /* Supprime la marge entre le titre et le contenu */
+  margin-bottom: 0;
 }
 
-/* Contenu des menus déroulants avec fond gris clair */
 .equipments-dropdown ul,
 .description-dropdown p {
-  margin-top: 0; /* Supprime la marge entre le contenu et le titre */
-  background-color: #f0f0f0; /* Fond gris clair pour le contenu */
+  margin-top: 0;
+  background-color: #f0f0f0;
   padding: 15px;
   border-radius: 5px;
 }
 
-/* Style spécifique à la liste des équipements */
 .equipments-dropdown ul {
   list-style-type: none;
   padding-left: 15px;
-  margin: 0; /* Supprime les marges externes */
+  margin: 0;
 }
 
 .equipments-dropdown li {
   margin-bottom: 5px;
-  color: #fe6060; /* Couleur du texte des équipements */
+  color: #fe6060;
 }
 
 .dropdown-content {
@@ -183,7 +188,56 @@ p {
 }
 
 .collapse-box ul {
-  list-style-type: none; /* Enlève les puces */
-  padding: 0; /* Supprime le padding par défaut */
-  margin: 0; /* Supprime la marge par défaut */
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
+
+.host-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .host-desktop {
+    display: none;
+  }
+
+  .host-mobile {
+    display: flex;
+    justify-content: space-between; /* Ajout pour l'espacement */
+    align-items: center; /* Alignement vertical au centre */
+    margin-top: 10px;
+  }
+
+  .host-mobile .rating {
+    order: -1;
+  }
+
+  .details-container {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .collapse-box {
+    width: 100%;
+  }
+
+  .host-container {
+    gap: 170px;
+  }
+}
+
+
+@media screen and (min-width: 769px) {
+  .host-desktop {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .host-container {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}
+

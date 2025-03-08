@@ -29,74 +29,103 @@ nav ul li a:hover {
     color: #ff6060;
 }
 
-/* Stylisation pour le contenu de la page */
+/* ✅ Conteneur principal */
 .about-container {
     display: flex;
-    flex-direction: column; /* Organise verticalement l'image et l'accordéon */
-    align-items: center; /* Centre les éléments horizontalement */
-    padding: 0 20px; /* Ajouter une marge intérieure (padding) de 20px à gauche et à droite */
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
 }
 
+/* ✅ Section image - pleine largeur */
 .image-section {
-    width: 100%; /* L'image occupe toute la largeur de l'écran */
+    width: 100%;
+    max-width: 100%; /* Supprime la limite pour prendre toute la largeur */
+    border-radius: 0; /* Supprime les bordures arrondies si nécessaire */
+    overflow: hidden;
 }
 
 .featured-image {
-    width: 100%; /* L'image occupe toute la largeur de son conteneur */
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 20px; 
 }
 
+/* ✅ Section accordéon */
 .accordion-section {
-    max-width: 990px; /* Largeur maximale pour les menus accordéon */
-    width: 100%; /* Utilise 100% de l'espace disponible */
-    margin-top: 20px; /* Espace entre l'image et les sections accordéon */
-    padding: 0 20px; /* Ajoute une marge intérieure pour les côtés gauche et droit */
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacement entre les éléments */
+    margin-top: 20px;
 }
 
-/* Stylisation pour les accordéons */
+/* ✅ Style des accordéons */
 .accordion {
-    border-radius: 4px;
+    width: 100%;
+    background-color: #ff6060;
+    color: white;
+    border-radius: 10px;
     overflow: hidden;
-    margin: 0;
-    padding: 0;
 }
 
 .accordion-title {
-    background-color: #ff6060;
     padding: 15px;
-    cursor: pointer;
-    font-family: Montserrat;
-    font-size: 1.5em;
+    font-size: 18px;
+    font-weight: bold;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    transition: background-color 0.3s ease;
-    color: white;
-    margin: 0;
-    border: none;
+    cursor: pointer;
+    border-radius: 10px;
 }
 
 .accordion-content {
-    padding: 0 15px; /* ✅ Ajuste le padding pour éviter l'espace en haut */
-    background-color: ghostwhite;
-    margin: 0;
-    max-height: 0; /* ✅ Assure que le contenu est caché par défaut */
-    overflow: hidden; /* ✅ Empêche l’espace résiduel */
-    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    background-color: white;
+    color: #333;
+    padding: 15px;
+    border-radius: 10px;
+    display: none;
 }
 
-/* ✅ Quand l’accordéon est ouvert */
 .accordion.open .accordion-content {
-    max-height: 500px; /* Ajuste cette valeur si nécessaire */
-    padding: 15px; /* ✅ Ajoute du padding uniquement quand ouvert */
+    display: block;
 }
 
-
-@keyframes slideDown {
-    from {
-        max-height: 0;
+/* ✅ Responsive - Mobile */
+@media screen and (max-width: 768px) {
+    .about-container {
+        width: 100%;
+        padding: 15px;
     }
-    to {
-        max-height: 500px;
+
+    .image-section {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 0;
+    }
+
+    .featured-image {
+        height: 180px;
+        border-radius: 0;
+    }
+
+    .accordion-section {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 15px;
+    }
+
+    .accordion {
+        border-radius: 10px;
+    }
+
+    .accordion-title {
+        border-radius: 10px;
+    }
+
+    .accordion-content {
+        border-radius: 10px;
     }
 }
-
