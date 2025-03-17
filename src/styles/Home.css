@@ -16,15 +16,19 @@
 
 .navbar-button {
     background-color: transparent;
-    color: #ff6060;
+    color: #ff6060 !important;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 10px 10px;
     cursor: pointer;
     font-size: 16px;
     text-decoration: none;
 }
 
+
 .navbar-button:hover {
+    text-decoration: none;
+    background-color: transparent;
+    color: #ff6060 !important;
     text-decoration: underline;
 }
 
@@ -137,6 +141,7 @@
         flex-direction: column;
         gap: 15px;
         align-items: center;
+        background-color: white;
     }
     
     .host-mobile {
@@ -158,7 +163,17 @@
         gap: 10px;
         text-align: right; /* Alignement du texte à droite */
     }
-} 
+
+    .image-text {
+        text-align: left;
+    }
+    
+    .navbar-button:hover {
+        text-decoration: underline;
+    }
+}
+
+
 
 
 

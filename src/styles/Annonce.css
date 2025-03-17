@@ -199,18 +199,55 @@ p {
 
 @media screen and (max-width: 768px) {
   .host-desktop {
-    display: none;
+    display: none; /* Masquer la version desktop */
   }
 
   .host-mobile {
-    display: flex;
-    justify-content: space-between; /* Ajout pour l'espacement */
-    align-items: center; /* Alignement vertical au centre */
+    display: flex; /* Afficher la version mobile */
+    flex-direction: row;
+    justify-content: space-between; /* Étoiles à gauche, hôte à droite */
+    align-items: center;
+    width: 100%;
     margin-top: 10px;
   }
 
   .host-mobile .rating {
-    order: -1;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Assurer l'alignement des étoiles à gauche */
+  }
+
+  .host-mobile .host {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Alignement à droite */
+    flex-shrink: 0;
+  }
+
+  .host-mobile .host-name {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #fe6060;
+    white-space: nowrap;
+    text-align: right;
+    margin-right: 10px;
+  }
+
+  .host-mobile .host-picture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+  }
+
+  .host-mobile .host-name {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #fe6060;
+    white-space: nowrap;
+    text-align: right;
+    margin-left: 10px;
   }
 
   .details-container {
@@ -222,13 +259,21 @@ p {
     width: 100%;
   }
 
-  .host-container {
-    gap: 170px;
+  .slider {
+    height: 415px;
+  }
+  
+  .slide-img {
+    height: 395px;
   }
 }
 
-
 @media screen and (min-width: 769px) {
+
+  .h1 {
+    text-align: left;
+  }
+  
   .host-desktop {
     display: flex;
     flex-direction: column;
@@ -236,8 +281,40 @@ p {
   }
 
   .host-container {
-    flex-direction: column;
-    align-items: flex-end;
+    display: flex;
+    flex-direction: column; /* Permet d'afficher les éléments en colonne */
+    align-items: center; /* Centrage de l'image et du texte */
+    text-align: center;
+  }
+
+  .host {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .host-name {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #fe6060;
+    white-space: nowrap;
+    margin-bottom: 5px; /* Ajoute un petit espace sous le nom */
+  }
+
+  .host-picture {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+    margin-bottom: 10px; /* Ajoute un espace entre la photo et les étoiles */
+  }
+
+  .rating {
+    display: flex;
+    justify-content: center; /* Centrage des étoiles sous la photo */
+    margin-top: 5px;
   }
 }
+
+
 

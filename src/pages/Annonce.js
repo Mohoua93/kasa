@@ -1,12 +1,21 @@
 import React, { useState } from "react";
 import logementData from "../assets/logements.json";
-import { useParams } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 import "../styles/Annonce.css";
 import Collapse from "../components/Collapse";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faChevronRight, faStar as fullStar } from "@fortawesome/free-solid-svg-icons";
-import { Navigate } from "react-router-dom";
 
+// Fonction pour générer les étoiles
+const getStars = (rating) => {
+  return Array.from({ length: 5 }, (_, i) => (
+    <FontAwesomeIcon
+      key={i}
+      icon={fullStar}
+      className={`star-icon ${i < rating ? "filled" : "empty"}`}
+    />
+  ));
+};
 
 // Composant Slider pour les images
 const Slider = ({ pictures }) => {
@@ -46,24 +55,14 @@ const Slider = ({ pictures }) => {
   );
 };
 
-// Composant HostDetails avec étoiles FontAwesome
-const HostDetails = ({ host, rating, className }) => {
-  const getStars = (rating) => {
-    return Array.from({ length: 5 }, (_, i) => (
-      <FontAwesomeIcon
-        key={i}
-        icon={fullStar}
-        className={`star-icon ${i < rating ? "filled" : "empty"}`}
-      />
-    ));
-  };
-
+// Composant HostDetails pour Desktop uniquement
+const HostDetails = ({ host, rating }) => {
   return (
     host && host.name && host.picture && (
-      <div className={className}>
+      <div className="host-container">
         <div className="host">
-          <img src={host.picture} alt={host.name} className="host-picture" />
           <p className="host-name">{host.name}</p>
+          <img src={host.picture} alt={host.name} className="host-picture" />
         </div>
         <div className="rating">{getStars(rating)}</div>
       </div>
@@ -71,7 +70,7 @@ const HostDetails = ({ host, rating, className }) => {
   );
 };
 
-// Composant Tags pour l'affichage des tags
+// Composant Tags pour afficher les tags
 const Tags = ({ tags }) => (
   tags?.length > 0 && (
     <div className="tags">
@@ -91,7 +90,6 @@ const Annonce = () => {
   if (!logement) {
     return <Navigate to="/404" replace />;
   }
-  
 
   return (
     <div className="annonce-container">
@@ -103,14 +101,19 @@ const Annonce = () => {
           <p>{logement.location}</p>
         </div>
         <div className="host-desktop">
-          <HostDetails host={logement.host} rating={logement.rating} className="host-container" />
+          <HostDetails host={logement.host} rating={logement.rating} />
         </div>
       </div>
-      
+
       <Tags tags={logement.tags} />
-      
+
+      {/* Affichage Mobile avec étoiles à gauche et hôte à droite */}
       <div className="host-mobile">
-        <HostDetails host={logement.host} rating={logement.rating} className="host-container" />
+        <div className="rating">{getStars(logement.rating)}</div>
+        <div className="host">
+          <p className="host-name">{logement.host.name}</p>
+          <img src={logement.host.picture} alt={logement.host.name} className="host-picture" />
+        </div>
       </div>
 
       <div className="details-container">
@@ -134,6 +137,7 @@ const Annonce = () => {
 };
 
 export default Annonce;
+
 
 
 

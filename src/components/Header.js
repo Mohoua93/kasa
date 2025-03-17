@@ -1,6 +1,6 @@
 import React from 'react';
-import logo from '../assets/LOGO.png'; // ✅ Assure-toi que le logo est bien dans `assets`
-import '../styles/Header.css'; // Assure-toi que le fichier CSS est bien importé
+import logo from '../assets/LOGO.png';
+import '../styles/Header.css';
 import { Link } from 'react-router-dom';
 
 export default function Header() {
@@ -10,10 +10,11 @@ export default function Header() {
                 <img src={logo} alt="Kasa Logo" />
             </div>
             <div className="navbar-buttons">
-                <button className="navbar-button"><Link to="/">Accueil</Link></button>
-                <button className="navbar-button"><Link to="/About">A propos</Link></button>
+                <Link to="/" className="navbar-button">Accueil</Link>
+                <Link to="/About" className="navbar-button">À propos</Link>
             </div>
         </div>
     );
 }
+
 

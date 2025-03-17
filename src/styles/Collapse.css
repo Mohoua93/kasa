@@ -5,7 +5,7 @@
   color: white; /* Texte blanc pour le résumé */
   background-color: #fe6060; /* Fond rouge pour le titre du menu */
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 10px;
   margin-bottom: 0; /* Supprime la marge entre le titre et le contenu */
   display: flex;
   justify-content: space-between;
@@ -112,5 +112,13 @@
 .accordion.open .accordion-content {
   max-height: 500px; /* Ajuste si nécessaire */
   padding: 15px; /* ✅ Ajoute du padding uniquement quand ouvert */
+}
+
+@media screen and (max-width: 768px) {
+
+  .title-dropdown {
+    border-radius: 15px;
+  }
+
 }
 
